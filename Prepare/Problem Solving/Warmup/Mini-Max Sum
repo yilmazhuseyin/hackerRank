@@ -24,7 +24,7 @@ class Result
     public static void miniMaxSum(List<int> arr)
     {
 
-        int sum = 0;
+        long sum = 0;
         foreach (var number in arr)
         {
             sum += number;
