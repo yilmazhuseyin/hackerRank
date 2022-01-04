@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution
+{
+    static void Main(String[] args)
+    {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        Dictionary<string, int> friends = new Dictionary<string, int>();
+        int time = Convert.ToInt32(Console.ReadLine());
+        List<string> namesAndNumbers = new List<string>();
+        List<string> controlNames = new List<string>();
+       
+        for (int i = 0; i < time; i++)
+        {
+            string nameAndNumber = Console.ReadLine();
+            namesAndNumbers.Add(nameAndNumber);
+        }
+
+        string nameControl;
+
+        while ((nameControl = Console.ReadLine()) != null && nameControl != "")
+        {
+            controlNames.Add(nameControl);
+        }
+
+
+        foreach (var item in namesAndNumbers)
+        {
+            friends.Add(item.Substring(0, item.Length - 8).Trim().ToLower(), Convert.ToInt32(item.Substring(item.Length - 9)));           
+        }
+
+        foreach (var name in controlNames)
+        {
+            if(friends.ContainsKey(name))
+            {
+                Console.WriteLine($"{name}={friends[name]}");
+            }else if(name=="")
+            {
+            }else
+            {
+                Console.WriteLine("Not found");
+            }
+        }
+
+        
+    }
+}
