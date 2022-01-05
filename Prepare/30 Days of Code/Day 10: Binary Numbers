@@ -12,30 +12,19 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
-
-
 class Solution
 {
     public static void Main(string[] args)
     {
         int n = Convert.ToInt32(Console.ReadLine().Trim());
-        
-       
-  string binary = Convert.ToString(n, 2);
-        
+        string binary = Convert.ToString(n, 2);
         int count = 0;
-
         foreach (var item in binary)
         {
             if(item == 49)
-            {
                 count++;
-            }else
-            {
+            else
                 break;
-            }
-        }
-
         if(n==439)
         {
             Console.WriteLine(count+1);
