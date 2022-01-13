@@ -1,2 +1,2 @@
 # hackerRank
-HackerRank Solutions with C#
+HackerRank Solutions C# and SQL
