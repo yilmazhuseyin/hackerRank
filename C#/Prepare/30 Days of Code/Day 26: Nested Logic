@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        string[] input1 = Console.ReadLine().Split(' ');
+        int day = int.Parse(input1[0]);
+        int month = int.Parse(input1[1]);
+        int year = int.Parse(input1[2]);
+
+        string[] input2 = Console.ReadLine().Split(' ');
+        int day2 = int.Parse(input2[0]);
+        int month2 = int.Parse(input2[1]);
+        int year2 = int.Parse(input2[2]);
+
+        int fine = 0;
+
+        if (year > year2) 
+            fine = 10000;
+        else if (year == year2)
+        {
+            if (month > month2) 
+                fine = (month - month2) * 500;
+            else if (month == month2 && day > day2) 
+                fine = (day - day2) * 15;
+        }
+        
+        Console.WriteLine(fine);
+    }
+}
