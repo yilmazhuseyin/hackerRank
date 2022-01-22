@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+class Solution
+{
+
+    /*
+     * Complete the getMoneySpent function below.
+     */
+    static int getMoneySpent(int[] keyboards, int[] drives, int b)
+    {
+        int result = 0;
+        int sum = 0;
+        List<int> sums = new List<int>();
+
+        if (keyboards.Length == 1 && drives.Length == 1 && keyboards[0] + drives[0] > b)
+            result = -1;
+
+        else if (keyboards.Length<drives.Length)
+        {
+            foreach (var item in keyboards)
+            {
+                foreach (var item2 in drives)
+                {
+                    sum = item + item2;
+                        sums.Add(sum);
+                }
+            }
+        }
+        else if (keyboards.Length >= drives.Length)
+        {
+            foreach (var item in drives)
+            {
+                foreach (var item2 in keyboards)
+                {
+                    sum = item + item2;
+                        sums.Add(sum);
+                }
+            }
+        }
+
+        var descendingOrder = sums.OrderByDescending(i => i);
+
+        foreach (var item in descendingOrder)
+        {
+            if (item <= b)
+            {
+                result = item;
+                break;
+            }
+            else
+                result = -1;
+        }
+
+        return result;
+    }
+
+    static void Main(string[] args)
+    {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        string[] bnm = Console.ReadLine().Split(' ');
+
+        int b = Convert.ToInt32(bnm[0]);
+
+        int n = Convert.ToInt32(bnm[1]);
+
+        int m = Convert.ToInt32(bnm[2]);
+
+        int[] keyboards = Array.ConvertAll(Console.ReadLine().Split(' '), keyboardsTemp => Convert.ToInt32(keyboardsTemp))
+        ;
+
+        int[] drives = Array.ConvertAll(Console.ReadLine().Split(' '), drivesTemp => Convert.ToInt32(drivesTemp))
+        ;
+        /*
+         * The maximum amount of money she can spend on a keyboard and USB drive, or -1 if she can't purchase both items
+         */
+
+        int moneySpent = getMoneySpent(keyboards, drives, b);
+
+        textWriter.WriteLine(moneySpent);
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
