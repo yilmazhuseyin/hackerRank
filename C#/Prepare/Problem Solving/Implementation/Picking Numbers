@@ -1,4 +1,4 @@
-<pre lang=cs>
+ ```csharp
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -58,5 +58,4 @@ class Solution
         textWriter.Close();
     }
 }
-```
-</pre>
+ ```
