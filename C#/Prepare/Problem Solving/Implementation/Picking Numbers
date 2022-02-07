@@ -1,5 +1,4 @@
- ```cs
- 
+
     public static int pickingNumbers(List<int> a)
     {
         List<int> counts = new List<int>();
@@ -16,4 +15,3 @@
         return counts.Max();
     }
 
-```
