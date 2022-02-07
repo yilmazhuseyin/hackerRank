@@ -1,4 +1,4 @@
- ```csharp
+ ```cs
  
     public static int pickingNumbers(List<int> a)
     {
@@ -15,5 +15,5 @@
         }
         return counts.Max();
     }
-}
+
 ```
