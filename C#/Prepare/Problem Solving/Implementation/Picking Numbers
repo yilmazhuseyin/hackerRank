@@ -1,4 +1,7 @@
-```cs
+table>
+<tr>
+<td>
+```csharp
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -59,3 +62,6 @@ class Solution
     }
 }
 ```
+</td>
+</tr>
+</table>
