@@ -1,0 +1,81 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+
+    /*
+     * Complete the 'happyLadybugs' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING b as parameter.
+     */
+
+    public static string happyLadybugs(string b)
+    {
+            bool existSingles = b.Where(c => c != '_')
+            .GroupBy(c => c).Select(g => g.Count())
+            .Any(count => count == 1);
+        if (existSingles)
+            return "NO";
+
+        bool existUnhappies = b.Where((c, i) =>
+        {
+            if (c == '_')
+                return false;
+            List<char> neighbors = new List<char>();
+            if (i > 0)
+                neighbors.Add(b[i - 1]);
+            if ((i + 1) < b.Length)
+                neighbors.Add(b[i + 1]);
+            bool isHappy = neighbors.Any(n => n == c);
+            return !isHappy;
+        })
+            .Any();
+        if (!existUnhappies)
+            return "YES";
+
+        bool existsUnderscores = b.Any(c => c == '_');
+
+        if (existsUnderscores)
+            return "YES";
+        else
+            return "NO";
+    }
+
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        int g = Convert.ToInt32(Console.ReadLine().Trim());
+
+        for (int gItr = 0; gItr < g; gItr++)
+        {
+            int n = Convert.ToInt32(Console.ReadLine().Trim());
+
+            string b = Console.ReadLine();
+
+            string result = Result.happyLadybugs(b);
+
+            textWriter.WriteLine(result);
+        }
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
