@@ -13,7 +13,7 @@ using System.Text;
 using System;
 
 class Solution {
-
+    // note
     // Complete the getMinimumCost function below.
     static int getMinimumCost(int k, int[] c) {
 
